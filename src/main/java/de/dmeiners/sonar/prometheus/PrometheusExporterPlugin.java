@@ -17,30 +17,16 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonarsource.plugins.example.settings;
+package de.dmeiners.sonar.prometheus;
 
-import java.util.List;
-import org.sonar.api.config.PropertyDefinition;
+import de.dmeiners.sonar.prometheus.web.PrometheusWebService;
+import org.sonar.api.Plugin;
 
-import static java.util.Arrays.asList;
+public class PrometheusExporterPlugin implements Plugin {
 
-public class HelloWorldProperties {
+    @Override
+    public void define(Context context) {
 
-  public static final String HELLO_KEY = "sonar.example.hello";
-  public static final String CATEGORY = "Properties Example";
-
-  private HelloWorldProperties() {
-    // only statics
-  }
-
-  public static List<PropertyDefinition> getProperties() {
-    return asList(
-      PropertyDefinition.builder(HELLO_KEY)
-        .name("Hello")
-        .description("Say Hello")
-        .defaultValue(String.valueOf(false))
-        .category(CATEGORY)
-        .build());
-  }
-
+        context.addExtension(PrometheusWebService.class);
+    }
 }
