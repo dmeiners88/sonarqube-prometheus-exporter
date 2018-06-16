@@ -36,7 +36,7 @@ sonar_vulnerabilities{key="de.dmeiners.mapping:mapping-impl-jexl",name="Mapping 
 ----
 
 == Configuration Page
-image::config-page.png[]
+image::config-page.png[600,600]
 
 == Example Grafana Dashboard
-image::grafana.png[]
+image::grafana.png[600,600]
