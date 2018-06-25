@@ -1,0 +1,16 @@
+language: java
+sudo: false
+install: true
+addons:
+  sonarcloud:
+    organization: "dmeiners88-github"
+    token:
+      secure: "WwbwXYL4djl7Q7+geK6MwnmXuhOlKrgRrq04poq1XbsK+hENtFqupvh+YgUdQqNgd53CGB3dKmH6FYAuZedx+SCV9BwSFbLEKHt8xMz8Q2kRLvAYk8oHBjcDLBAt6qU52g7ODXV4TshKjWMDwFjOX0Ni30zSa5JNuc/39vKOZyCYBO+Qz12mkLgSujD7cOdlU3SA8kbLfXpHy2tofyaHuNi70FnjBe+22BzY7qHwThJ53b28Nx3VUfGiG9kS+Req6anvHrszcthgjPXxA2oNvTXOtRatdtcbl0jKZ4sK6fDVhImlM8yiicuhvyTITq5fFjsWEUcecH647T5MRKsAy39usiQBBOTJx1qrJebVjO2LslQvC48Z2c+3xl3NDrt0YmuegsPyMgiTBs9pdT5gJj9n7Y4W0+YVfL0Pma157roz8JgY9YHnnvJn+paD5ecOtiDL6syUyX9Z8CeGno5Vh1G/MdZULhnCW+5VHawk+wHcf/p+YImAQ2kD6l5VxY4sA0OygauIlFtunLuwkInvtiW+Rg+7D5/Ai7G6MBdGnROXuftLRJdY1p9zUsjVSnRdwAPB7JsESCFVgpendj8P5J0rDloR90rbGpczlAQRG6XSMrDbWmwoyr1wNyBH/kFG0jcyJgeh7rf72gcCEKoncnLpuTH9u3uOuCACsRfWuN8="
+jdk:
+  - oraclejdk8
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
