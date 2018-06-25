@@ -7,6 +7,27 @@
     <artifactId>sonar-prometheus-exporter</artifactId>
     <packaging>sonar-plugin</packaging>
     <version>1.0.0-SNAPSHOT</version>
+    <url>https://gitlab.com/dmeiners/sonarqube-prometheus-exporter</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Daniel Meiners</name>
+            <email>mail@dmeiners.de</email>
+        </developer>
+    </developers>
+    <issueManagement>
+        <url>https://gitlab.com/dmeiners/sonarqube-prometheus-exporter/issues</url>
+    </issueManagement>
+    <scm>
+        <url>https://gitlab.com/dmeiners/sonarqube-prometheus-exporter</url>
+    </scm>
 
     <name>Prometheus Exporter</name>
     <description>Prometheus Exporter for SonarQube
@@ -14,7 +35,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sonar.apiVersion>7.1</sonar.apiVersion>
+        <sonar.apiVersion>7.0</sonar.apiVersion>
         <jdk.min.version>1.8</jdk.min.version>
         <sonar.sources>src/main/java</sonar.sources>
     </properties>
