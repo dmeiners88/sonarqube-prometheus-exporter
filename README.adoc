@@ -1,42 +1,47 @@
 = Sonar Prometheus Exporter
 
-== Example Output
+[.float-group]
+--
+[.left]
+image::https://travis-ci.com/dmeiners88/sonarqube-prometheus-exporter.svg?branch=develop["Build Status", link="https://travis-ci.com/dmeiners88/sonarqube-prometheus-exporter"]
 
+[.left]
+image::https://sonarcloud.io/api/project_badges/measure?project=de.dmeiners%3Asonar-prometheus-exporter&metric=alert_status[link="https://sonarcloud.io/dashboard?id=de.dmeiners%3Asonar-prometheus-exporter"]
+--
+
+== Installation
+
+1. Drop `sonar-prometheus-exporter-<VERSION>.jar` into `$SONARQUBE_HOME/extensions/plugins`.
+2. Restart the SonarQube server.
+
+[source,http]
 ----
-# HELP sonar_coverage Coverage by tests
-# TYPE sonar_coverage gauge
-sonar_coverage{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 25.4
-sonar_coverage{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 75.2
-sonar_coverage{key="de.dmeiners.mapping:mapping-impl-mvel",name="Mapping Library - MVEL Implementation",} 79.5
-sonar_coverage{key="de.dmeiners.mapping:mapping-impl-jexl",name="Mapping Library - JEXL Implementation",} 77.9
-# HELP sonar_sqale_index Total effort (in days) to fix all the issues on the component and therefore to comply to all the requirements.
-# TYPE sonar_sqale_index gauge
-sonar_sqale_index{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 0.0
-sonar_sqale_index{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 87.0
-sonar_sqale_index{key="de.dmeiners.mapping:mapping-impl-mvel",name="Mapping Library - MVEL Implementation",} 0.0
-sonar_sqale_index{key="de.dmeiners.mapping:mapping-impl-jexl",name="Mapping Library - JEXL Implementation",} 20.0
-# HELP sonar_code_smells Code Smells
-# TYPE sonar_code_smells gauge
-sonar_code_smells{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 0.0
-sonar_code_smells{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 5.0
-sonar_code_smells{key="de.dmeiners.mapping:mapping-impl-mvel",name="Mapping Library - MVEL Implementation",} 0.0
-sonar_code_smells{key="de.dmeiners.mapping:mapping-impl-jexl",name="Mapping Library - JEXL Implementation",} 1.0
-# HELP sonar_bugs Bugs
-# TYPE sonar_bugs gauge
-sonar_bugs{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 0.0
-sonar_bugs{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 0.0
-sonar_bugs{key="de.dmeiners.mapping:mapping-impl-mvel",name="Mapping Library - MVEL Implementation",} 0.0
-sonar_bugs{key="de.dmeiners.mapping:mapping-impl-jexl",name="Mapping Library - JEXL Implementation",} 0.0
-# HELP sonar_vulnerabilities Vulnerabilities
-# TYPE sonar_vulnerabilities gauge
-sonar_vulnerabilities{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 0.0
-sonar_vulnerabilities{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 0.0
-sonar_vulnerabilities{key="de.dmeiners.mapping:mapping-impl-mvel",name="Mapping Library - MVEL Implementation",} 0.0
-sonar_vulnerabilities{key="de.dmeiners.mapping:mapping-impl-jexl",name="Mapping Library - JEXL Implementation",} 0.0
+GET /api/prometheus/metrics HTTP/1.1
+
+# HELP sonarqube_sqale_index Total effort (in days) to fix all the issues on the component and therefore to comply to all the requirements.
+# TYPE sonarqube_sqale_index gauge
+sonarqube_sqale_index{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 1061.0
+sonarqube_sqale_index{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 448.0
+# HELP sonarqube_code_smells Code Smells
+# TYPE sonarqube_code_smells gauge
+sonarqube_code_smells{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 248.0
+sonarqube_code_smells{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 128.0
+# HELP sonarqube_vulnerabilities Vulnerabilities
+# TYPE sonarqube_vulnerabilities gauge
+sonarqube_vulnerabilities{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 0.0
+sonarqube_vulnerabilities{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 3.0
+# HELP sonarqube_coverage Coverage by tests
+# TYPE sonarqube_coverage gauge
+sonarqube_coverage{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 44.4
+sonarqube_coverage{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 76.8
+# HELP sonarqube_bugs Bugs
+# TYPE sonarqube_bugs gauge
+sonarqube_bugs{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 0.0
+sonarqube_bugs{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 0.0
 ----
 
 == Configuration Page
-image::config-page.png[600,600]
+image::config-page.png[600,600,align="center"]
 
 == Example Grafana Dashboard
-image::grafana.png[600,600]
+image::grafana.png[600,600,align="center"]
