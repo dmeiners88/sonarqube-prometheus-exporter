@@ -26,6 +26,7 @@ public class PrometheusWebService implements WebService {
 
     static final Set<Metric<?>> SUPPORTED_METRICS = new HashSet<>();
     static final String CONFIG_PREFIX = "prometheus.export.";
+    private static final String METRIC_PREFIX = "sonarqube_";
 
     private final Configuration configuration;
     private final Map<String, Gauge> gauges = new HashMap<>();
@@ -111,7 +112,7 @@ public class PrometheusWebService implements WebService {
         CollectorRegistry.defaultRegistry.clear();
 
         this.enabledMetrics.forEach(metric -> gauges.put(metric.getKey(), Gauge.build()
-            .name("sonar_" + metric.getKey())
+            .name(METRIC_PREFIX + metric.getKey())
             .help(metric.getDescription())
             .labelNames("key", "name")
             .register()));
