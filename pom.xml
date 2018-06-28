@@ -29,7 +29,7 @@
         <url>https://gitlab.com/dmeiners/sonarqube-prometheus-exporter</url>
     </scm>
 
-    <name>Prometheus Exporter</name>
+    <name>SonarQube Prometheus Exporter</name>
     <description>Prometheus Exporter for SonarQube
     </description>
 
@@ -89,6 +89,7 @@
                 <configuration>
                     <pluginKey>prometheus-exporter</pluginKey>
                     <pluginClass>de.dmeiners.sonar.prometheus.PrometheusExporterPlugin</pluginClass>
+                    <pluginName>Prometheus Exporter</pluginName>
                 </configuration>
             </plugin>
             <plugin>
