@@ -47,7 +47,7 @@
 
 ## Screenshots
 <p align="center">
-  <img src="config-page.png" alt="Configuration Page">
-  <img src="api-call.png" alt="API Call">
-  <img src="grafana.png" alt="Example Grafana Dashboard">
+  <img src="config-page.png" alt="Configuration Page" width="700px">
+  <img src="api-call.png" alt="API Call" width="700px">
+  <img src="grafana.png" alt="Example Grafana Dashboard" width="700px">
 </p>
