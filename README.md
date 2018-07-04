@@ -9,8 +9,8 @@
   <a href="https://sonarcloud.io/dashboard?id=de.dmeiners%3Asonar-prometheus-exporter">
     <img src="https://sonarcloud.io/api/project_badges/measure?project=de.dmeiners%3Asonar-prometheus-exporter&metric=alert_status" alt="SonarCloud Analysis">
   </a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/Download-1.0.0-blue.svg" alt="Download">
+  <a href="https://github.com/dmeiners88/sonarqube-prometheus-exporter/releases">
+    <img src="https://img.shields.io/github/release/dmeiners88/sonarqube-prometheus-exporter.svg" alt="Download">
   </a>
   <a href="https://github.com/dmeiners88/sonarqube-prometheus-exporter/blob/develop/LICENSE">
     <img src="https://img.shields.io/github/license/dmeiners88/sonarqube-prometheus-exporter.svg" alt="License">
@@ -36,14 +36,22 @@
 
 ## Installation
 
-1. Drop `sonar-prometheus-exporter-<VERSION>.jar` into `$SONARQUBE_HOME/extensions/plugins`.
-2. Restart the SonarQube server.
-
-> TODO: Automatically create and link to current GitHub release.
+1. Download [latest snapshot release](https://github.com/dmeiners88/sonarqube-prometheus-exporter/releases/tag/v1.0.0-SNAPSHOT-2018-07-04)
+2. Drop `sonar-prometheus-exporter-1.0.0-SNAPSHOT.jar` into `$SONARQUBE_HOME/extensions/plugins`.
+3. Restart the SonarQube server.
 
 ## Usage
 
-> TODO: Describe usage
+1. Configure which metrics you want to export under Administration &rarr; Configuration &rarr; General Settings &rarr; Prometheus Exporter
+2. Add a scrape config to your Prometheus instance similar to this:
+```yaml
+scrape_configs:
+  - job_name: 'sonarqube'
+    metrics_path: '/api/prometheus/metrics'
+    static_configs:
+      - targets: ['localhost:9000']
+```
+3. Alternatively, point your HTTP client to `http://localhost:9000/api/prometheus/metrics`
 
 ## Screenshots
 <p align="center">
