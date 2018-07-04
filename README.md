@@ -41,32 +41,9 @@
 
 > TODO: Automatically create and link to current GitHub release.
 
-```
-GET /api/prometheus/metrics HTTP/1.1
-
-# HELP sonarqube_sqale_index Total effort (in days) to fix all the issues on the component and therefore to comply to all the requirements.
-# TYPE sonarqube_sqale_index gauge
-sonarqube_sqale_index{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 1061.0
-sonarqube_sqale_index{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 448.0
-# HELP sonarqube_code_smells Code Smells
-# TYPE sonarqube_code_smells gauge
-sonarqube_code_smells{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 248.0
-sonarqube_code_smells{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 128.0
-# HELP sonarqube_vulnerabilities Vulnerabilities
-# TYPE sonarqube_vulnerabilities gauge
-sonarqube_vulnerabilities{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 0.0
-sonarqube_vulnerabilities{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 3.0
-# HELP sonarqube_coverage Coverage by tests
-# TYPE sonarqube_coverage gauge
-sonarqube_coverage{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 44.4
-sonarqube_coverage{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 76.8
-# HELP sonarqube_bugs Bugs
-# TYPE sonarqube_bugs gauge
-sonarqube_bugs{key="de.dmeiners.mapping:mapping-api",name="Mapping Library - API",} 0.0
-sonarqube_bugs{key="de.dmeiners.mapping:mapping-impl-java",name="Mapping Library - Java Implementation",} 0.0
-```
-
 ## Usage
+
+> TODO: Describe usage
 
 ## Screenshots
 ![Configuration Page](config-page.png "Configuration Page")
