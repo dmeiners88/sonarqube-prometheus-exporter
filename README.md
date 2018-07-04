@@ -46,8 +46,8 @@
 > TODO: Describe usage
 
 ## Screenshots
-![Configuration Page](config-page.png "Configuration Page")
-
-![API Call](api-call.png "API Call")
-
-![Example Grafana Dashboard](grafana.png "Example Grafana Dashboard")
+<p align="center">
+  <img src="config-page.png" alt="Configuration Page">
+  <img src="api-call.png" alt="API Call">
+  <img src="grafana.png" alt="Example Grafana Dashboard">
+</p>
