@@ -39,6 +39,7 @@ public class PrometheusWebService implements WebService {
         SUPPORTED_METRICS.add(CoreMetrics.CODE_SMELLS);
         SUPPORTED_METRICS.add(CoreMetrics.COVERAGE);
         SUPPORTED_METRICS.add(CoreMetrics.TECHNICAL_DEBT);
+        SUPPORTED_METRICS.add(CoreMetrics.NEW_COVERAGE);
     }
 
     public PrometheusWebService(Configuration configuration) {
