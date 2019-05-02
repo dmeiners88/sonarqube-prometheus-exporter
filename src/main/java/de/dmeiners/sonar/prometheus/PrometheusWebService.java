@@ -74,7 +74,11 @@ public class PrometheusWebService implements WebService {
 
                             if (this.gauges.containsKey(measure.getMetric())) {
 
-                                this.gauges.get(measure.getMetric()).labels(project.getKey(), project.getName()).set(Double.valueOf(measure.getValue()));
+                                if(measure.hasValue()){
+                                    this.gauges.get(measure.getMetric()).labels(project.getKey(), project.getName()).set(Double.valueOf(measure.getValue()));
+                                }else{
+                                    this.gauges.get(measure.getMetric()).labels(project.getKey(), project.getName()).set(Double.valueOf(measure.getPeriods().getPeriodsValueList().get(0).getValue()));
+                                }
                             }
                         });
                     });
