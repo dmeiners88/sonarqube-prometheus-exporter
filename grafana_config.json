@@ -126,7 +126,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sonar_bugs{name=\"$projectName\"}",
+          "expr": "sonarqube_bugs{name=~\"$projectName\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -209,7 +209,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sonar_vulnerabilities{name=\"$projectName\"}",
+          "expr": "sonarqube_vulnerabilities{name=~\"$projectName\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -290,7 +290,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sonar_code_smells{name=\"$projectName\"}",
+          "expr": "sonarqube_code_smells{name=~\"$projectName\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -373,7 +373,7 @@
       "tableColumn": "__name__",
       "targets": [
         {
-          "expr": "sonar_sqale_index{name=\"$projectName\"}",
+          "expr": "sonarqube_sqale_index{name=~\"$projectName\"}",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -458,7 +458,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sonar_coverage{name=\"$projectName\"}",
+          "expr": "sonarqube_coverage{name=~\"$projectName\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -495,7 +495,7 @@
         "multi": true,
         "name": "projectName",
         "options": [],
-        "query": "label_values(sonar_bugs, name)",
+        "query": "label_values(sonarqube_bugs, name)",
         "refresh": 1,
         "regex": "",
         "sort": 0,
