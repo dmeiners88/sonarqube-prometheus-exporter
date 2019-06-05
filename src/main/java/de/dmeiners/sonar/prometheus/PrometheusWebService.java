@@ -10,10 +10,12 @@ import org.sonar.api.resources.Qualifiers;
 import org.sonar.api.server.ws.WebService;
 import org.sonarqube.ws.Components;
 import org.sonarqube.ws.Measures;
+import org.sonarqube.ws.ProjectBranches;
 import org.sonarqube.ws.client.WsClient;
 import org.sonarqube.ws.client.WsClientFactories;
 import org.sonarqube.ws.client.components.SearchRequest;
 import org.sonarqube.ws.client.measures.ComponentRequest;
+import org.sonarqube.ws.client.projectbranches.ListRequest;
 
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -39,6 +41,7 @@ public class PrometheusWebService implements WebService {
         SUPPORTED_METRICS.add(CoreMetrics.CODE_SMELLS);
         SUPPORTED_METRICS.add(CoreMetrics.COVERAGE);
         SUPPORTED_METRICS.add(CoreMetrics.TECHNICAL_DEBT);
+        SUPPORTED_METRICS.add(CoreMetrics.NEW_COVERAGE);
     }
 
     public PrometheusWebService(Configuration configuration) {
@@ -68,14 +71,20 @@ public class PrometheusWebService implements WebService {
                     List<Components.Component> projects = getProjects(wsClient);
                     projects.forEach(project -> {
 
-                        Measures.ComponentWsResponse wsResponse = getMeasures(wsClient, project);
+                        ProjectBranches.ListWsResponse branchResponse = getBranches(wsClient, project);
+                        branchResponse.getBranchesList().forEach(branch -> {
 
-                        wsResponse.getComponent().getMeasuresList().forEach(measure -> {
+                            Measures.ComponentWsResponse wsResponse = getMeasures(wsClient, project, branch.getName());
+                            wsResponse.getComponent().getMeasuresList().forEach(measure -> {
+                                if (this.gauges.containsKey(measure.getMetric())) {
 
-                            if (this.gauges.containsKey(measure.getMetric())) {
-
-                                this.gauges.get(measure.getMetric()).labels(project.getKey(), project.getName()).set(Double.valueOf(measure.getValue()));
-                            }
+                                    if(measure.hasValue()){
+                                        this.gauges.get(measure.getMetric()).labels(project.getKey(), project.getName(), branch.getName()).set(Double.valueOf(measure.getValue()));
+                                    }else{
+                                        this.gauges.get(measure.getMetric()).labels(project.getKey(), project.getName(), branch.getName()).set(Double.valueOf(measure.getPeriods().getPeriodsValueList().get(0).getValue()));
+                                    }
+                                }
+                            });
                         });
                     });
                 }
@@ -114,11 +123,11 @@ public class PrometheusWebService implements WebService {
         this.enabledMetrics.forEach(metric -> gauges.put(metric.getKey(), Gauge.build()
             .name(METRIC_PREFIX + metric.getKey())
             .help(metric.getDescription())
-            .labelNames("key", "name")
+            .labelNames("key", "name", "branch")
             .register()));
     }
 
-    private Measures.ComponentWsResponse getMeasures(WsClient wsClient, Components.Component project) {
+    private Measures.ComponentWsResponse getMeasures(WsClient wsClient, Components.Component project, String branchName) {
 
         List<String> metricKeys = this.enabledMetrics.stream()
             .map(Metric::getKey)
@@ -126,14 +135,31 @@ public class PrometheusWebService implements WebService {
 
         return wsClient.measures().component(new ComponentRequest()
             .setComponent(project.getKey())
+            .setBranch(branchName)
             .setMetricKeys(metricKeys));
+    }
+
+    private ProjectBranches.ListWsResponse getBranches(WsClient wsClient, Components.Component project){
+
+        return wsClient.projectBranches().list(new ListRequest()
+            .setProject(project.getKey()));
     }
 
     private List<Components.Component> getProjects(WsClient wsClient) {
 
-        return wsClient.components().search(new SearchRequest()
-            .setQualifiers(Collections.singletonList(Qualifiers.PROJECT))
-            .setPs("500"))
-            .getComponentsList();
+        int pageSize = 500;
+        int projectsCount = wsClient.components().search(new SearchRequest()
+                        .setQualifiers(Collections.singletonList(Qualifiers.PROJECT))
+                        .setPs(String.valueOf(pageSize))).getPaging().getTotal();
+
+        List<Components.Component> componentList = new ArrayList<>();
+        for(int i=1; i < (projectsCount/pageSize)+1; i++){
+            componentList.addAll(wsClient.components().search(new SearchRequest()
+                    .setQualifiers(Collections.singletonList(Qualifiers.PROJECT))
+                    .setPs(String.valueOf(pageSize)).setP(String.valueOf(i)))
+                    .getComponentsList());
+        }
+
+        return componentList;
     }
 }
