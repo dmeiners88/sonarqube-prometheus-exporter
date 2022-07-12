@@ -6,8 +6,8 @@
     <groupId>de.dmeiners</groupId>
     <artifactId>sonar-prometheus-exporter</artifactId>
     <packaging>sonar-plugin</packaging>
-    <version>1.0.0-SNAPSHOT</version>
-    <url>https://github.com/dmeiners88/sonarqube-prometheus-exporter</url>
+    <version>1.0.0</version>
+    <url>https://github.com/bheemreddy181/sonarqube-prometheus-exporter</url>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -18,15 +18,15 @@
     </licenses>
     <developers>
         <developer>
-            <name>Daniel Meiners</name>
-            <email>mail@dmeiners.de</email>
+            <name>Bheem</name>
+            <email>bheemreddy181@gmail.com</email>
         </developer>
     </developers>
     <issueManagement>
-        <url>https://github.com/dmeiners88/sonarqube-prometheus-exporter/issues</url>
+        <url>https://github.com/bheemreddy181/sonarqube-prometheus-exporter/issues</url>
     </issueManagement>
     <scm>
-        <url>https://github.com/dmeiners88/sonarqube-prometheus-exporter.git</url>
+        <url>https://github.com/bheemreddy181/sonarqube-prometheus-exporter.git</url>
     </scm>
 
     <name>SonarQube Prometheus Exporter</name>
@@ -35,7 +35,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sonar.apiVersion>7.0</sonar.apiVersion>
+        <sonar.apiVersion>9.4.0.54424</sonar.apiVersion>
         <jdk.min.version>1.8</jdk.min.version>
         <sonar.sources>src/main/java</sonar.sources>
     </properties>
@@ -55,12 +55,12 @@
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient</artifactId>
-            <version>0.4.0</version>
+            <version>0.16.0</version>
         </dependency>
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient_common</artifactId>
-            <version>0.4.0</version>
+            <version>0.16.0</version>
         </dependency>
     </dependencies>
 
@@ -69,7 +69,7 @@
             <plugin>
                 <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
                 <artifactId>sonar-packaging-maven-plugin</artifactId>
-                <version>1.18.0.372</version>
+                <version>1.21.0.505</version>
                 <extensions>true</extensions>
                 <configuration>
                     <pluginKey>prometheus-exporter</pluginKey>
@@ -80,7 +80,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.10.1</version>
                 <configuration>
                     <source>${jdk.min.version}</source>
                     <target>${jdk.min.version}</target>
