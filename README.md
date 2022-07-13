@@ -58,4 +58,5 @@ scrape_configs:
   <img src="config-page.png" alt="Configuration Page" width="700px">
   <img src="api-call.png" alt="API Call" width="700px">
   <img src="grafana.png" alt="Example Grafana Dashboard" width="700px">
+  <img src="grafana-additional-checks.png" alt="Grafana Dashboard with Additional Checks" width="700px">
 </p>
