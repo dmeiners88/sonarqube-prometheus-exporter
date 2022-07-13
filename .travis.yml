@@ -3,13 +3,13 @@ sudo: false
 install: true
 addons:
   sonarcloud:
-    organization: dmeiners88-github
+    organization: "curo-financial-technologies-corp"
     token:
-      secure: "C1boW7Tc6dUFRVBxLLVBA9ZvrikLGHnFDFZFglUNSnUbR1WJ/Oto3ZCf3yPCkgbTX1KJ3PirdEjOFmLoiROZFL+2/52YS6Ah3/HJBZBghDz7hATHh3PkSbAmTWYVqrDtWoUGrAJdAP9PjSXsjH4/+Lmqq6ParLr90+7jZRp4l3ozMivrgwfIglX2RbLaFr+atyIK+wC0e9EkuLxGxHx8K68BTZh/2joyO1+ZBqoQMHINuP0+bIKBtWXxP4KW23QOpo4PtlxUhadWTSBr2lJz3EfAIaawTqYQMcabmkb2Z26Rm+kONfR/E1d8A5gUNfRktDZHNhlLJMNCj1U80rxEXNbB2LqiyJ661l+F0IKjf2vt5CZ6qmrQ4Wq+P27DJvDsmd/yAU8yqu8htYfnkdvAIYx+Ar91piLUxP7K23vD9dTT2BbsMxMirSrnd9jBjUsid4vCbmmTRsTV8CzgbbsG/myj0S8KOcTviRgh1dfvxenDf3dJmpwWnqkXXog2bMrCLdXLSJ0LLUxVfUBJ2yPCmySXqsa3WCJq2tYt2HDLtyWvPrhkIdMtGo1xUH4Qd7244IE9aQvGb1hdPdmN7lNHcQl6fkF6zZ0GiDR3nI3gsscHiWQvosx+vjfu2/ODDyMreObG7gIhwbwtq07atxTfuKdexRxAghqFy7bgXj/3Azk="
+      secure: "390f5e2f823df9e13cac6cd75caa35c0a934dab4"
 jdk:
-- oraclejdk8
+- oraclejdk17
 script:
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=CURO-Financial-Technologies-Corp_sonarqube-prometheus-exporter
 cache:
   directories:
   - "$HOME/.m2/repository"

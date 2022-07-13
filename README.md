@@ -2,18 +2,18 @@
 <h4 align="center">Prometheus Exporter Plugin for SonarQube.</h4>
 
 <p align="center">
-  <a href="https://travis-ci.com/dmeiners88/sonarqube-prometheus-exporter">
-    <img src="https://travis-ci.com/dmeiners88/sonarqube-prometheus-exporter.svg?branch=develop"
+  <a href="https://travis-ci.com/bheemreddy181/sonarqube-prometheus-exporter">
+    <img src="https://travis-ci.com/bheemreddy181/sonarqube-prometheus-exporter.svg?branch=develop"
          alt="Build Status">
   </a>
-  <a href="https://sonarcloud.io/dashboard?id=de.dmeiners%3Asonar-prometheus-exporter">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=de.dmeiners%3Asonar-prometheus-exporter&metric=alert_status" alt="SonarCloud Analysis">
+  <a href="https://sonarcloud.io/summary/new_code?id=CURO-Financial-Technologies-Corp_sonarqube-prometheus-exporter">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=CURO-Financial-Technologies-Corp_sonarqube-prometheus-exporter&metric=alert_status" alt="SonarCloud Analysis">
   </a>
-  <a href="https://github.com/dmeiners88/sonarqube-prometheus-exporter/releases">
-    <img src="https://img.shields.io/github/release/dmeiners88/sonarqube-prometheus-exporter.svg" alt="Download">
+  <a href="https://github.com/CURO-Financial-Technologies-Corp/sonarqube-prometheus-exporter/releases">
+    <img src="https://img.shields.io/github/release/CURO-Financial-Technologies-Corp/sonarqube-prometheus-exporter.svg" alt="Download">
   </a>
-  <a href="https://github.com/dmeiners88/sonarqube-prometheus-exporter/blob/develop/LICENSE">
-    <img src="https://img.shields.io/github/license/dmeiners88/sonarqube-prometheus-exporter.svg" alt="License">
+  <a href="https://github.com/CURO-Financial-Technologies-Corp/sonarqube-prometheus-exporter/blob/develop/LICENSE">
+    <img src="https://img.shields.io/github/license/CURO-Financial-Technologies-Corp/sonarqube-prometheus-exporter.svg" alt="License">
   </a>
   <a href="https://semver.org/spec/v2.0.0.html">
     <img src="https://img.shields.io/badge/semver-2.0.0-brightgreen.svg" alt="Semantic Versioning">
@@ -36,8 +36,8 @@
 
 ## Installation
 
-1. Download [latest snapshot release](https://github.com/dmeiners88/sonarqube-prometheus-exporter/releases/tag/v1.0.0-SNAPSHOT-2018-07-04)
-2. Drop `sonar-prometheus-exporter-1.0.0-SNAPSHOT.jar` into `$SONARQUBE_HOME/extensions/plugins`.
+1. Download [latest snapshot release](https://github.com/CURO-Financial-Technologies-Corp/sonarqube-prometheus-exporter/releases/tag/v1.0.0)
+2. Drop `sonar-prometheus-exporter-1.0.0.jar` into `$SONARQUBE_HOME/extensions/plugins`.
 3. Restart the SonarQube server.
 
 ## Usage
